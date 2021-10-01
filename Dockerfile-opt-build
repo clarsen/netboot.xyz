@@ -1,0 +1,29 @@
+FROM ghcr.io/netbootxyz/builder:latest as builder
+
+# optimized build - move dependencies and compiles before ansible execution so layers can be reused and not rebuilt/mutated each time
+
+# repo for build
+COPY . /ansible
+
+RUN \
+ echo "**** running ansible (Generate disks) ****" && \
+ cd /ansible && \
+ ansible-playbook -e "generate_menus=false" -e "custom_generate_menus=false" \
+ -i inventory site.yml
+
+RUN \
+ echo "**** running ansible ****" && \
+ cd /ansible && \
+ ansible-playbook \
+    -e "generate_disks=false" \
+    -e "generate_checksums=false" \
+    -e "generate_signatures=false" \
+    -i inventory site.yml
+
+# runtime stage
+FROM alpine:latest
+
+COPY --from=builder /var/www/html/ /mnt/
+COPY docker-build-root/ /
+
+ENTRYPOINT [ "/dumper.sh" ]
