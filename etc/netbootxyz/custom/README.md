@@ -8,8 +8,7 @@ When these options are set:
 
 ```
 custom_generate_menus: true
-custom_generate_menus_top: true     # this
-custom_generate_menus_bottom: true  # or this
+custom_generate_menus_location: top     # or bottom
 custom_templates_dir: "{{ netbootxyz_conf_dir }}/custom"
 ```
 
@@ -30,7 +29,6 @@ the root source directory and then set the variable like so:
 
 ```
 custom_generate_menus: true
-custom_generate_menus_top: true     # this
-custom_generate_menus_bottom: true  # or this
+custom_generate_menus_location: top     # or bottom
 custom_templates_dir: "/ansible/custom"
 ```

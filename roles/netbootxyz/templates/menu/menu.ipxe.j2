@@ -43,7 +43,7 @@ clear menu
 set space:hex 20:20
 set space ${space:string}
 isset ${next-server} && menu ${site_name} v${version} - next-server: ${next-server} || menu ${site_name}
-{% if custom_generate_menus_top | bool %}
+{% if custom_generate_menus | bool  and custom_generate_menus_location == "top" %}
 item --gap Custom User Menus: ||
 item custom-user ${space} Custom User Menus
 {% endif %}
@@ -83,7 +83,7 @@ isset ${github_user} && item custom-github ${space} ${github_user}'s Custom Menu
 isset ${custom_url} && item --gap Custom URL Menu: ||
 isset ${custom_url} && item custom-url ${space} Custom URL Menu ||
 {% endif %}
-{% if custom_generate_menus_bottom | bool %}
+{% if custom_generate_menus | bool  and custom_generate_menus_location == "bottom" %}
 item --gap Custom User Menus: ||
 item custom-user ${space} Custom User Menus
 {% endif %}
