@@ -8,10 +8,12 @@ When these options are set:
 
 ```
 custom_generate_menus: true
+custom_generate_menus_top: true     # this
+custom_generate_menus_bottom: true  # or this
 custom_templates_dir: "{{ netbootxyz_conf_dir }}/custom"
 ```
 
-the menu will add an option for custom menus and attempt to load into
+the menu will add an option for custom menus (at top or bottom) and attempt to load into
 custom/custom.ipxe.  From there custom options can be built and
 maintained seperately from the netboot.xyz source tree so that both
 menus can be updated independently.
@@ -28,5 +30,7 @@ the root source directory and then set the variable like so:
 
 ```
 custom_generate_menus: true
+custom_generate_menus_top: true     # this
+custom_generate_menus_bottom: true  # or this
 custom_templates_dir: "/ansible/custom"
 ```
