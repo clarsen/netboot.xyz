@@ -4,7 +4,37 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [2.0.50]
+## [2.0.54]
+
+## [2.0.53]
+#### Added
+- Fedora 35
+- Various version updates
+
+## [2.0.52] - 2021-10-31
+#### Added
+- Support for ProxyDHCP environments
+
+## [2.0.51] - 2021-10-15
+#### Added
+- Fedora CoreOS - aarch64 support
+- Garuda Linux Live builds
+- Ubuntu 21.10 live builds and installers
+- Added Padded Floppy builds for tooling sensitive to size of disk
+- Added logic for building iPXE linux binaries
+
+#### Fixed
+- Manjaro builds working again
+
+## [2.0.50] - 2021-10-03
+#### Added
+- Added Clonezilla 32-bit
+
+#### Changed
+- Proper rolling for boot.netboot.xyz implemented, endpoints.yml and defaults
+  are now pushed to boot.netboot.xyz upon update in development branch to
+  ensure version updates can be consumed as identified. Allows for new versions
+  to be available before a release.
 
 ## [2.0.49] - 2021-09-29
 #### Added
