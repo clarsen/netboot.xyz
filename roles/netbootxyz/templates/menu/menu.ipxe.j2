@@ -31,7 +31,15 @@ echo
 echo Please download the latest version from {{ site_name }}.
 echo
 echo Attempting to chain to latest version...
-chain --autofree http://${boot_domain}/ipxe/${ipxe_disk} ||
+{% if bootloader_https_enabled | bool %}
+set conn_type https
+chain --autofree https://${boot_domain}/ipxe/${ipxe_disk} || echo ${HTTPS_ERR}
+sleep 5
+{% endif %}
+{% if bootloader_http_enabled | bool %}
+set conn_type http
+chain --autofree https://${boot_domain}/ipxe/${ipxe_disk} || echo ${HTTP_ERR}
+{% endif %}
 :version_up2date
 {% endif %}
 
