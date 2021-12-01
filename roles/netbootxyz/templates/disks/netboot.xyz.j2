@@ -17,10 +17,17 @@ set version {{ boot_version }}
 :start
 echo ${bold}${fg_gre}${site_name} - ${fg_whi}v${version}${boldoff}
 iseq ${site_name} netboot.xyz || echo ${bold}${fg_whi}Powered by ${fg_gre}netboot.xyz${fg_whi}${boldoff}
+console --x 1024 --y 768
 prompt --key m --timeout 4000 Hit the ${bold}m${boldoff} key to open failsafe menu... && goto failsafe || goto dhcp
 
 :dhcp
-dhcp || goto netconfig
+# only ipv4 dhcp
+ifconf -c dhcp || goto netconfig
+isset ${netX/ip} && show netX/ip ||
+isset ${netX/dns} && show netX/dns ||
+isset ${netX/dns6} && show netX/dns6 ||
+echo Waiting 3 seconds...
+sleep 3
 isset ${next-server} && isset ${proxydhcp/next-server} && goto choose-tftp || set tftp-server ${next-server} && goto load-custom-ipxe
 
 :choose-tftp
@@ -101,11 +108,15 @@ chain --autofree tftp://${tftp-server}/menu.ipxe || echo ${TFTP_ERR} && goto men
 :menu
 {% if bootloader_https_enabled | bool %}
 set conn_type https
+echo chaining to https://${boot_domain}/menu.ipxe ...
+sleep 3
 chain --autofree https://${boot_domain}/menu.ipxe || echo ${HTTPS_ERR}
 sleep 5
 {% endif %}
 {% if bootloader_http_enabled | bool %}
 set conn_type http
+echo chaining to http://${boot_domain}/menu.ipxe ...
+sleep 3
 chain --autofree http://${boot_domain}/menu.ipxe || echo ${HTTP_ERR}
 {% endif %}
 goto localboot

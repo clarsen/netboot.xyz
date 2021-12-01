@@ -86,3 +86,10 @@
     get_url:
       url: "{{ ipxe_ca_url }}"
       dest: "{{ cert_dir }}/{{ ipxe_ca_filename }}"
+ 
+  - name: Copy in additional trust anchor (certificate)
+    copy:
+      src: "{{ cert_file_2 }}"
+      dest: "{{ cert_dir }}/{{ cert_file_2 }}"
+    when: cert_file_2 is defined
+

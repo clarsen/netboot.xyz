@@ -3,21 +3,34 @@
 # overrides defaults in netbootxyz role
 generate_menus: true
 generate_disks: true
+generate_disks_hybrid: true
 generate_checksums: true
 generate_local_vars: true
 
-
 # set desired site name
-#site_name: mysitename.com
+site_name: lsg-provision.lbl.gov
 
 # set desired boot domain
-#boot_domain: boot.mysitename.com
+boot_domain: lsg-provision.lbl.gov:8443
+
+custom_generate_menus: true
+custom_generate_menus_location: top
+custom_templates_dir: "/ansible/custom"
+
+ipxe_debug_enabled: true
+ipxe_debug_options: httpcore,exec,validator,x509,rootcert,certstore:15,resolv,dns,dhcp:15
+
+ipxe_repo: https://github.com/clarsen/ipxe
+ipxe_branch: 9062544f6a0c69c249b90d21a08d05518aafc2ec
+
+cert_file_2: incommon.cert
+
 
 # set boot version
 #boot_version: "2.x"
 
 #bootloader_tftp_enabled: false
-#bootloader_https_enabled: true
+bootloader_https_enabled: true
 #bootloader_http_enabled: true
 
 # set release overrides from standard netboot.xyz defaults
@@ -41,9 +54,11 @@ generate_local_vars: true
 # win_base_url:
 # rhel_base_url: 
 
-early_menu_enabled: false
+early_menu_enabled: true
 early_menu_contents: |
    ### early menu overrides
    ### used to set early ipxe options such as custom console & logo
    # console --x 1024 --y 768
    # console --picture https://boot.netboot.xyz/logo.png
+   # console --picture https://creative.lbl.gov/wp-content/uploads/sites/3/2019/12/LBL_Masterbrand_tile.png
+   console --picture https://lsg-provision.lbl.gov:8443/LBNL-background.png
