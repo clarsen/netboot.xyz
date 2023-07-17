@@ -14,8 +14,11 @@ jobs:
   rc-build:
     name: Build Release Candidate
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Retrieve Certs
       run: |
@@ -34,10 +37,9 @@ jobs:
         ./script/build_release rc
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v1-node16
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: ${{ secrets.AWS_ROLE_STAGING }}
         aws-region: ${{ secrets.AWS_ACCESS_REGION }}
 
     - name: Deploy RC to release-candidate bucket
@@ -54,7 +56,7 @@ jobs:
 
     - name: Invalidate Cloudfront
       run: |
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID_STAGING }} --paths "/rc/*" "/rc/ipxe/*"
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID_STAGING }} --paths "/rc/*" "/rc/ipxe/*" "/rc/sigs/*"
 
     - name: Tag RC Release
       run: |

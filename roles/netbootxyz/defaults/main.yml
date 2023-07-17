@@ -49,6 +49,15 @@ bootloaders:
     ipxe_bin: undionly.kpxe
     output_bin: -undionly.kpxe
     type: DHCP-undionly
+  multiarch:
+  - desc: Used for CD/DVD, Virtual CDs, DRAC/iLO, VMware, Virtual Box
+    ipxe_bin: ipxe.iso
+    output_bin: -multiarch.iso
+    type: ISO
+  - desc: Used for creation of USB Keys
+    ipxe_bin: ipxe.img
+    output_bin: -multiarch.img
+    type: IMG
   rpi:
   - desc: Raspberry Pi 4 - USB/SD Card Image
     ipxe_bin: rpi4-sdcard.img
@@ -118,12 +127,14 @@ releases:
     mirror: http://repo.almalinux.org
     name: AlmaLinux
     versions:
-    - code_name: 8.3
-      name: 8.3
-    - code_name: 8.4
-      name: 8.4
-    - code_name: 8.5
-      name: 8.5
+    - code_name: 9.2
+      name: 9.2
+    - code_name: 9.1
+      name: 9.1
+    - code_name: 9.0
+      name: 9.0
+    - code_name: 8.7
+      name: 8.7
   alpinelinux:
     base_dir: alpine
     enabled: true
@@ -131,8 +142,8 @@ releases:
     mirror: http://dl-cdn.alpinelinux.org
     name: Alpine Linux
     versions:
-    - code_name: v3.15
-      name: '3.15'
+    - code_name: v3.18
+      name: '3.18'
     - code_name: edge
       name: Edge (development)
   anarchy:
@@ -149,8 +160,8 @@ releases:
     mirror: mirrors.kernel.org
     name: Arch Linux
     versions:
-    - code_name: 2021.11.01
-      name: 2021.11.01
+    - code_name: 2023.07.01
+      name: 2023.07.01
   blackarch:
     enabled: true
     menu: linux
@@ -165,6 +176,8 @@ releases:
     mirror: http://mirror.centos.org
     name: CentOS
     versions:
+    - code_name: 9-stream
+      name: 9.0 Stream
     - code_name: 8.5.2111
       name: '8.5'
     - code_name: 8
@@ -180,11 +193,11 @@ releases:
     mirror: https://builds.coreos.fedoraproject.org
     name: Fedora CoreOS
     versions:
-    - code_name: 35.20211029.3.0
+    - code_name: 38.20230625.3.0
       name: stable
-    - code_name: 35.20211119.2.0
+    - code_name: 38.20230709.2.0
       name: testing
-    - code_name: 35.20211119.1.0
+    - code_name: 38.20230709.1.1
       name: next
   debian:
     archive_mirror: http://archive.debian.org
@@ -195,15 +208,15 @@ releases:
     name: Debian
     versions:
       stable:
+      - code_name: bookworm
+        name: 12.0 (bookworm)
       - code_name: bullseye
         name: 11.0 (bullseye)
       - code_name: buster
         name: 10.0 (buster)
-      - code_name: stretch
-        name: 9.0 (stretch)
       testing:
-      - code_name: bookworm
-        name: bookworm (testing)
+      - code_name: trixie
+        name: trixie (testing)
       - code_name: sid
         name: sid (unstable)
   devuan:
@@ -230,17 +243,17 @@ releases:
     mirror: http://mirrors.kernel.org
     name: Fedora
     versions:
-    - code_name: 35
-      name: 35
-    - code_name: 34
-      name: 34
-    - code_name: 33
-      name: 33
+    - code_name: 38
+      name: 38
+    - code_name: 37
+      name: 37
+    - code_name: 36
+      name: 36
   flatcar:
     enabled: true
     menu: linux
     mirror: ''
-    name: Container Linux by Flatcar
+    name: Flatcar Container Linux
     versions:
     - code_name: stable
       name: Stable Channel
@@ -255,16 +268,16 @@ releases:
     menu: bsd
     name: FreeBSD
   freedos:
-    base_dir: download/download
+    base_dir: pub/micro/pc-stuff/freedos/files/distributions/1.3/official
     enabled: true
     menu: dos
-    mirror: http://www.freedos.org
+    mirror: http://www.ibiblio.org
     name: FreeDOS
     versions:
-    - code_name: FD12FULL
-      name: 1.2 Full Installer
-    - code_name: FD12LITE
-      name: 1.2 Lite Installer
+    - code_name: FD13-FullUSB
+      name: 1.3 Full Installer
+    - code_name: FD13-LiteUSB
+      name: 1.3 Lite Installer
   gentoo:
     enabled: true
     menu: linux
@@ -272,11 +285,7 @@ releases:
   harvester:
     enabled: true
     menu: linux
-    mirror: https://releases.rancher.com/harvester
     name: Harvester
-    versions:
-    - code_name: v0.3.0
-      name: v0.3.0
   ipfire:
     base_dir: releases/ipfire-2.x
     enabled: true
@@ -284,8 +293,8 @@ releases:
     mirror: https://downloads.ipfire.org
     name: IPFire
     versions:
-    - code_name: 2.27-core160
-      name: 2.27 Core160
+    - code_name: 2.27-core176
+      name: 2.27 Core176
   k3os:
     enabled: true
     menu: linux
@@ -307,8 +316,8 @@ releases:
     mirror: http://mirrors.kernel.org
     name: Mageia
     versions:
-    - code_name: '7.1'
-      name: '7.1'
+    - code_name: '8'
+      name: '8'
     - code_name: cauldron
       name: cauldron
   nixos:
@@ -321,6 +330,14 @@ releases:
       name: nixos-20.09
     - code_name: nixos-21.05
       name: nixos-21.05
+    - code_name: nixos-21.11
+      name: nixos-21.11
+    - code_name: nixos-22.05
+      name: nixos-22.05
+    - code_name: nixos-22.11
+      name: nixos-22.11
+    - code_name: nixos-23.05
+      name: nixos-23.05
     - code_name: nixos-unstable
       name: nixos-unstable
   openEuler:
@@ -330,10 +347,14 @@ releases:
     mirror: http://repo.openeuler.org
     name: openEuler
     versions:
-    - code_name: openEuler-20.03-LTS-SP1
-      name: openEuler-20.03-LTS-SP1
-    - code_name: openEuler-21.03
-      name: openEuler-21.03
+    - code_name: openEuler-20.03-LTS-SP3
+      name: openEuler-20.03-LTS-SP3
+    - code_name: openEuler-22.03-LTS
+      name: openEuler-22.03-LTS
+    - code_name: openEuler-22.09
+      name: openEuler-22.09
+    - code_name: openEuler-22.03-LTS-SP1
+      name: openEuler-22.03-LTS-SP1
   openbsd:
     base_dir: pub/OpenBSD
     enabled: true
@@ -341,6 +362,15 @@ releases:
     mirror: http://ftp.openbsd.org
     name: OpenBSD
     versions:
+    - code_name: '7.3'
+      image_ver: '73'
+      name: '7.3'
+    - code_name: '7.2'
+      image_ver: '72'
+      name: '7.2'
+    - code_name: '7.1'
+      image_ver: '71'
+      name: '7.1'
     - code_name: '7.0'
       image_ver: '70'
       name: '7.0'
@@ -372,16 +402,12 @@ releases:
     mirror: http://download.opensuse.org
     name: OpenSUSE
     versions:
+    - code_name: '15.5'
+      name: openSUSE Leap 15.5
+    - code_name: '15.4'
+      name: openSUSE Leap 15.4
     - code_name: '15.3'
       name: openSUSE Leap 15.3
-    - code_name: '15.2'
-      name: openSUSE Leap 15.2
-    - code_name: '15.1'
-      name: openSUSE Leap 15.1
-    - code_name: '15.0'
-      name: openSUSE Leap 15.0
-    - code_name: '42.3'
-      name: openSUSE Leap 42.3
     - code_name: tumbleweed
       name: openSUSE tumbleweed
   oracle:
@@ -390,21 +416,17 @@ releases:
     mirror: https://yum.oracle.com
     name: Oracle Linux
     paths:
-      7: /repo/OracleLinux/OL7/latest/x86_64
-      8: /repo/OracleLinux/OL8/baseos/latest/x86_64
+      7: /repo/OracleLinux/OL7/latest
+      8: /repo/OracleLinux/OL8/baseos/latest
+      9: /repo/OracleLinux/OL9/baseos/latest
+  photon:
+    enabled: true
+    menu: linux
+    name: VMware Photon
   proxmox:
     enabled: true
     menu: linux
-    name: Proxmox VE
-  rancheros:
-    base_dir: os/latest
-    enabled: true
-    menu: linux
-    mirror: http://releases.rancher.com
-    name: RancherOS
-    versions:
-    - code_name: latest
-      name: Latest (20 MB)
+    name: Proxmox
   rhel:
     enabled: true
     menu: linux
@@ -416,10 +438,10 @@ releases:
     mirror: http://download.rockylinux.org
     name: Rocky Linux
     versions:
-    - code_name: 8.5
-      name: 8.5
-    - code_name: 8.4
-      name: 8.4
+    - code_name: 9
+      name: 9 (Latest)
+    - code_name: 8
+      name: 8 (Latest)
   scientific:
     base_dir: linux/scientific
     enabled: true
@@ -439,7 +461,7 @@ releases:
     base_dir: slackware
     enabled: true
     menu: linux
-    mirror: http://mirror.rackspace.com
+    mirror: http://mirrors.kernel.org
     name: Slackware
     versions:
     - code_name: current
@@ -448,6 +470,8 @@ releases:
       name: '14.2'
     - code_name: '14.1'
       name: '14.1'
+    - code_name: '15.0'
+      name: '15.0'
   smartos:
     base_dir: /platform/i86pc/
     enabled: true
@@ -455,18 +479,18 @@ releases:
     mirror: https://netboot.joyent.com/os/
     name: SmartOS
     versions:
-    - code_name: 20211118T011125Z
-      name: 20211118T011125Z
-    - code_name: 20211104T023339Z
-      name: 20211104T023339Z
-    - code_name: 20211021T215943Z
-      name: 20211021T215943Z
-    - code_name: 20211007T001741Z
-      name: 20211007T001741Z
+    - code_name: 20230713T000721Z
+      name: 20230713T000721Z
+    - code_name: 20230629T053622Z
+      name: 20230629T053622Z
+    - code_name: 20230615T000418Z
+      name: 20230615T000418Z
+    - code_name: 20230601T000726Z
+      name: 20230601T000726Z
   talos:
     enabled: true
     menu: linux
-    mirror: https://github.com/talos-systems/talos/releases
+    mirror: https://github.com/siderolabs/talos/releases
     name: Talos
     platforms:
     - key: metal
@@ -479,8 +503,8 @@ releases:
       name: Digital Ocean
     - key: gcp
       name: GCP
-    - key: packet
-      name: Packet
+    - key: metal
+      name: Equinix Metal
     - key: vmware
       name: VMware
   tinycore:
@@ -491,13 +515,13 @@ releases:
     versions:
     - arch: x86
       code_name: core
-      initrd: /12.x/x86/release/distribution_files/core.gz
-      kernel: /12.x/x86/release/distribution_files/vmlinuz
+      initrd: /14.x/x86/release/distribution_files/core.gz
+      kernel: /14.x/x86/release/distribution_files/vmlinuz
       name: Core
     - arch: x86_64
       code_name: corepure
-      initrd: /12.x/x86_64/release/distribution_files/corepure64.gz
-      kernel: /12.x/x86_64/release/distribution_files/vmlinuz64
+      initrd: /14.x/x86_64/release/distribution_files/corepure64.gz
+      kernel: /14.x/x86_64/release/distribution_files/vmlinuz64
       name: CorePure
     - arch: x86
       code_name: dcorebionic
@@ -597,10 +621,12 @@ releases:
     mirror: http://archive.ubuntu.com
     name: Ubuntu
     versions:
-    - code_name: impish
-      name: 21.10 Impish Indri
-    - code_name: hirsute
-      name: 21.04 Hirsute Hippo
+    - code_name: lunar
+      name: 23.04 Lunar Lobster
+    - code_name: kinetic
+      name: 22.10 Kinetic Kudu
+    - code_name: jammy
+      name: 22.04 LTS Jammy Jellyfish
     - code_name: focal
       name: 20.04 LTS Focal Fossa (Subiquity)
     - code_name: focal-legacy
@@ -609,6 +635,8 @@ releases:
       name: 18.04 LTS Bionic Beaver
     - code_name: xenial
       name: 16.04 LTS Xenial Xerus
+    - code_name: trusty
+      name: 14.04 LTS Trusty Tahr
   vmware:
     enabled: true
     menu: linux
@@ -619,7 +647,7 @@ releases:
     name: VyOS
     versions:
     - code_name: rolling
-      name: 1.3 rolling
+      name: 1.4 rolling
   zeninstall:
     enabled: true
     menu: linux
@@ -826,7 +854,7 @@ utilitiespcbios64:
     enabled: true
     name: Ultimate Boot CD (UBCD)
     type: memdisk
-    util_path: http://mirror.sysadminguide.net/ubcd/ubcd538.iso
-    version: '538'
+    util_path: https://mirror.sysadminguide.net/ubcd/ubcd539.iso
+    version: '539'
 wimboot_location: http://${boot_domain}/wimboot
 wimboot_upstream_url: https://github.com/ipxe/wimboot/releases/latest/download/wimboot

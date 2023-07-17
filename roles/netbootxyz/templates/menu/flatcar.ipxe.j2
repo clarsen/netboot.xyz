@@ -1,10 +1,10 @@
 #!ipxe
 
 # Flatcar Container Linux
-# https://kinvolk.io/flatcar-container-linux/
+# https://flatcar-linux.org/
 # For further info on:
-# iPXE and flatcar Container Linux: https://docs.flatcar-linux.org/os/booting-with-ipxe/
-# Setting up Ignition: https://docs.flatcar-linux.org/os/provisioning/
+# iPXE and flatcar Container Linux: https://www.flatcar.org/docs/latest/installing/bare-metal/booting-with-ipxe/
+# Setting up Ignition: https://www.flatcar.org/docs/latest/installing/bare-metal/installing-to-disk/
 # 64-bit only
 
 goto ${menu}
@@ -28,7 +28,7 @@ goto flatcar_exit
 :edge
 set release ${menu}
 set base-url http://${release}.release.flatcar-linux.net/amd64-usr/current
-kernel ${base-url}/flatcar_production_pxe.vmlinuz ${flatcar_firstboot} ${flatcar_params} flatcar.autologin=tty1 flatcar.autologin=ttyS0 {{ kernel_params }}
+kernel ${base-url}/flatcar_production_pxe.vmlinuz ${flatcar_firstboot} ${flatcar_params} flatcar.autologin=tty1 flatcar.autologin=ttyS0 initrd=flatcar_production_pxe_image.cpio.gz ${cmdline}
 initrd ${base-url}/flatcar_production_pxe_image.cpio.gz
 boot
 goto flatcar_exit

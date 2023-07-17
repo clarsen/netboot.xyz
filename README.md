@@ -1,8 +1,11 @@
 ## netboot.xyz [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Your%20favorite%20operating%20systems%20in%20one%20place!&url=https://netboot.xyz&hashtags=netbootxyz,ipxe,pxe,linux,tech,code)
 
+Your favorite operating systems in one place!
+
 [![Build Status](https://github.com/netbootxyz/netboot.xyz/workflows/release/badge.svg)](https://github.com/netbootxyz/netboot.xyz/actions?query=workflow%3Arelease)
 [![Discord](https://img.shields.io/discord/425186187368595466)](https://discord.gg/An6PA2a)
 [![Release](https://img.shields.io/github/v/release/netbootxyz/netboot.xyz?color=hunter%20green)](https://github.com/netbootxyz/netboot.xyz/releases/latest)
+![GitHub all releases](https://img.shields.io/github/downloads/netbootxyz/netboot.xyz/total)
 
 ![netboot.xyz menu](https://netboot.xyz/images/netboot.xyz.gif)
 
@@ -95,7 +98,7 @@ The build output will be located in /var/www/html by default.
 #### Deploying with Docker
 
 ```
-docker build -t localbuild -f Dockerfile-build .
+docker build -t localbuild -f Dockerfile .
 docker run --rm -it -v $(pwd):/buildout localbuild
 ```
 
@@ -135,7 +138,7 @@ In addition to being able to host netboot.xyz locally, you can also create your 
 | Fatdog64 | https://distro.ibiblio.org/fatdog/web/ | No | Yes |
 | Fedora | https://fedoraproject.org | Yes | Yes |
 | Feren OS | https://ferenos.weebly.com/ | Yes | No |
-| Flatcar Linux | https://kinvolk.io/flatcar-container-linux/ | Yes | No |
+| Flatcar Container Linux | https://flatcar-linux.org/ | Yes | No |
 | FreeBSD | https://freebsd.org | Yes, disk image | No |
 | FreeDOS | http://www.freedos.org | ISO - Memdisk| No |
 | Garuda Linux | https://garudalinux.org/ | No | Yes |
@@ -163,10 +166,9 @@ In addition to being able to host netboot.xyz locally, you can also create your 
 | Parrot Security | https://www.parrotsec.org | No | Yes |
 | Peppermint | https://peppermintos.com | No | Yes |
 | Pop OS |https://system76.com/pop| No | Yes |
-| Proxmox VE | https://www.proxmox.com/ | Yes | No |
+| Proxmox Open Source Products | https://www.proxmox.com/ | Yes | No |
 | Q4OS | https://q4os.org | No | Yes |
 | Raizo | https://sourceforge.net/projects/live-raizo/ | No | Yes |
-| RancherOS | https://rancher.com/rancher-os | Yes | No |
 | Red Hat Enterprise Linux | https://www.redhat.com | User supplied media | No |
 | Regolith | https://regolith-linux.org | No | Yes |
 | Rocky Linux | https://rockylinux.org/ | Yes | No |
@@ -180,6 +182,7 @@ In addition to being able to host netboot.xyz locally, you can also create your 
 | Tiny Core Linux | https://tinycorelinux.net | Yes | Yes |
 | Ubuntu | https://www.ubuntu.com | Yes | Yes |
 | VMware | https://www.vmware.com | User supplied media | No |
+| VMware Photon | https://vmware.github.io/photon/ | Yes | No |
 | Voyager | https://voyagerlive.org | No | Yes |
 | VyOS | https://vyos.io | Yes | No |
 | Zen Installer | https://sourceforge.net/projects/revenge-installer | Yes | No |
@@ -190,8 +193,6 @@ In addition to being able to host netboot.xyz locally, you can also create your 
 | Name       | URL                     | Type |
 |------------|-------------------------|------|
 | 4MLinux | https://4mlinux.com/ | Kernel/Initrd |
-| ALT Linux Rescue | https://en.altlinux.org/Rescue | ISO - Memdisk |
-| BakAndImgCD | https://bakandimgcd.4mlinux.com/ | Kernel/Initrd |
 | Boot Repair CD | https://sourceforge.net/projects/boot-repair-cd/ | LiveCD |
 | Breakin | http://www.advancedclustering.com/products/software/breakin/ | Kernel/Initrd |
 | CAINE | https://www.caine-live.net/ | LiveCD |
@@ -208,8 +209,11 @@ In addition to being able to host netboot.xyz locally, you can also create your 
 | ShredOS | https://github.com/PartialVolume/shredos.x86_64 | Kernel | 
 | Super Grub2 Disk | http://www.supergrubdisk.org | ISO - Memdisk |
 | System Rescue | https://system-rescue.org/ | LiveCD |
-| The Smallest Server Suite | https://thesss.4mlinux.com/ | Kernel/Initrd |
 | Ultimate Boot CD | http://www.ultimatebootcd.com | ISO - Memdisk |
+
+### Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/netbootxyz/netboot.xyz.svg)](https://starchart.cc/netbootxyz/netboot.xyz)
 
 ### Feedback
 
